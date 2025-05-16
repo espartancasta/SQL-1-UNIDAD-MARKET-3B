@@ -1,14 +1,16 @@
 package com.tecdesoftware.market_app;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestControllergit add .
+
 @RequestMapping("/saludar")
 public class HelloWorldController {
 
-    @RequestMapping("/hola")
+    @GetMapping("/hola")
     public String saludar() {
-        return "BYE WOLRD JAIME";
+        return "Hi World, by EnriqueCast";
     }
 }
