@@ -1,29 +1,33 @@
-package com.tecdesoftware.market_app.persistance.entity;
+package com.tecdesoftware.market.persistence.entity;
 
-import jakarta.persistence.*; // o javax.persistence.* dependiendo de tu configuración
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "compras_productos")
+@Table(name="compras_productos")
+
 public class CompraProducto {
-
     @EmbeddedId
-    private CompraProductoPk id;
+    private CompraProductoPK id;
+    //ID Pendiente
 
-    @Column(name = "cantidad")
     private Integer cantidad;
-
-    @Column(name = "total")
     private Double total;
-
-    @Column(name = "estado")
     private Boolean estado;
 
-    // Getters y Setters
-    public CompraProductoPk getId() {
+    //Conocer todos los productos que hay en una compra
+    @ManyToOne
+    @JoinColumn (name="id_compra",insertable = false, updatable = false)
+    private Compra compra;
+
+    @ManyToOne
+    @JoinColumn (name="id_producto",insertable = false, updatable = false)
+    private Producto producto;
+
+    public CompraProductoPK getId() {
         return id;
     }
 
-    public void setId(CompraProductoPk id) {
+    public void setId(CompraProductoPK id) {
         this.id = id;
     }
 

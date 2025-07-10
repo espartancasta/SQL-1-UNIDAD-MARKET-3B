@@ -1,49 +1,44 @@
-package com.tecdesoftware.market_app.persistance.entity;
-
+package com.tecdesoftware.market.persistence.entity;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "Productos")
-public class Productos {
+@Table(name="productos")
+public class Producto
 
+{
+        @Id //LLave primaria
+        //Autogenera Ids autoincrementables
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name="id_producto")
+        private int idProducto;
 
-    @Id //llave primaria
-    //Hace el id autoincremental
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_products")
-    private Integer idProducto;
+        private String nombre;
 
-    private String nombre;
+        @Column(name="id_categoria")
+        private int idCategoria;
 
-    @Column(name ="id_categoria")
-    private Integer idCategoria;
+        @Column(name="codigo_barras")
+        private String codigoBarras;
 
-    @Column(name = "codigo_barras")
-    private String codigoBarras;
+        @Column(name="precio_venta")
+        private Double precioVenta;
 
-    @Column(name = "precio_venta")
-    private Double precioVenta;
+        @Column(name="cantidad_stock")
+        private Integer cantidadStock;
 
-    @Column (name = "cantidad_stock")
-    private Integer cantidadStock;
+        private Boolean estado;
 
-    private Boolean estado;
-
-    //Relación con la entidad Cliente : Muchas compras a un cliente
     @ManyToOne
-    //No quiero que se modifique la entidad cliente, solo relacionarla
-    @JoinColumn(name ="id_categoria", insertable=false, updatable=false)
-    private Categoria Categoria;
+    @JoinColumn(name = "id_categoria",insertable = false,updatable = false)
+    private Categoria categoria;
 
 
-//Métodos publicos//
-
-    public Integer getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -93,5 +88,13 @@ public class Productos {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
