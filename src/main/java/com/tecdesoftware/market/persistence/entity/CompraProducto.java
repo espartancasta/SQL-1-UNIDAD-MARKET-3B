@@ -16,8 +16,17 @@ public class CompraProducto {
 
     //Conocer todos los productos que hay en una compra
     @ManyToOne
+    @MapsId("Idcompra")
     @JoinColumn (name="id_compra",insertable = false, updatable = false)
     private Compra compra;
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     @ManyToOne
     @JoinColumn (name="id_producto",insertable = false, updatable = false)
@@ -33,6 +42,14 @@ public class CompraProducto {
 
     public Integer getCantidad() {
         return cantidad;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     public void setCantidad(Integer cantidad) {
