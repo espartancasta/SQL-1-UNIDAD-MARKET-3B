@@ -29,3 +29,4 @@ public interface PurchaseMapper {
     @Mapping(target = "cliente", ignore = true)
     Compra toCompra(Purchase purchase);
 }
+//hola

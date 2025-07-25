@@ -3,26 +3,26 @@ package com.tecdesoftware.market.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="compras_productos")
+@Table(name = "compras_productos")
 public class CompraProducto {
+
     @EmbeddedId
     private CompraProductoPK id;
-    //ID Pendiente
 
     private Integer cantidad;
     private Double total;
     private Boolean estado;
 
-    //Conocer todos los productos que hay en una compra
     @ManyToOne
     @MapsId("idCompra")
-    @JoinColumn (name="id_compra",insertable = false, updatable = false)
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
     @ManyToOne
-    @JoinColumn (name="id_producto",insertable = false, updatable = false)
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
+    // Getters and Setters
     public CompraProductoPK getId() {
         return id;
     }
@@ -71,3 +71,5 @@ public class CompraProducto {
         this.producto = producto;
     }
 }
+
+//asi esta bien o
