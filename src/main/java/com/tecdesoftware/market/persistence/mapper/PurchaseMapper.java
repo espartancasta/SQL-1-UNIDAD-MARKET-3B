@@ -1,7 +1,6 @@
 package com.tecdesoftware.market.persistence.mapper;
 
 import com.tecdesoftware.market.domain.Purchase;
-import com.tecdesoftware.market.domain.PurchaseItem;
 import com.tecdesoftware.market.persistence.entity.Compra;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -10,12 +9,10 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {PurchaseItemMapper.class})
+@Mapper(componentModel = "spring", uses = {PurchaseItemMapper.class}) // ✅ Aquí es el cambio
 public interface PurchaseMapper {
 
     @Mappings({
-
-
             @Mapping(source = "idCompra", target = "purchaseId"),
             @Mapping(source = "idCliente", target = "clientId"),
             @Mapping(source = "fecha", target = "date"),
@@ -23,14 +20,12 @@ public interface PurchaseMapper {
             @Mapping(source = "comentario", target = "comment"),
             @Mapping(source = "estado", target = "state"),
             @Mapping(source = "productos", target = "items")
-
     })
     Purchase toPurchase(Compra compra);
+
     List<Purchase> toPurchases(List<Compra> compras);
 
     @InheritInverseConfiguration
-    @Mapping(target = "cliente", ignore= true)
+    @Mapping(target = "cliente", ignore = true)
     Compra toCompra(Purchase purchase);
-
-
 }

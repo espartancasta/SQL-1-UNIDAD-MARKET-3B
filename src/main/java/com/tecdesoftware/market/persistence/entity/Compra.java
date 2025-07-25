@@ -12,10 +12,10 @@ public class Compra {
     //Autogenera Ids autoincrementables
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
-    private int idCompra;
+    private Integer idCompra;
 
     @Column(name = "id_cliente")
-    private Integer idCliente;
+    private String idCliente;
 
     private LocalDateTime fecha;
 
@@ -32,22 +32,22 @@ public class Compra {
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "compra",cascade={CascadeType.ALL})
     private List<CompraProducto> productos;
 
-    public int getIdCompra() {
+    public Integer getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(int idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 
-    public Integer getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

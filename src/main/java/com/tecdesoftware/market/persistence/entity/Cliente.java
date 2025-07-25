@@ -9,9 +9,9 @@ import java.util.List;
 public class Cliente {
     @Id
     //Porque el ID será la CURP @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private Long celular; //Se almacena como número grande 9992896754
     private String direccion;
 
@@ -22,11 +22,11 @@ public class Cliente {
     private List<Compra> compras;
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,12 +38,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public Long getCelular() {

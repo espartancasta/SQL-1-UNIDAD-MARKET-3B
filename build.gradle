@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.5'
+	id 'org.springframework.boot' version '3.1.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17) // Cambiado de 21 a 17
+		languageVersion = JavaLanguageVersion.of(17)
 	}
 }
 
@@ -18,11 +18,14 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.4.5'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0' // ✅ Esta es la clave para Swagger
 	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// MapStruct
 	implementation 'org.mapstruct:mapstruct:1.6.3'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
 }
