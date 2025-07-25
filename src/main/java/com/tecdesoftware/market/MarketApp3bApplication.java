@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MarketApp3bApplication {
-
+//version final?
 	public static void main(String[] args) {
 		SpringApplication.run(MarketApp3bApplication.class, args);
 	}
